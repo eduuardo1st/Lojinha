@@ -1,45 +1,62 @@
 package model;
 
 public class ItemPedido {
-   private int IdIntPedido;
-   private Produto produto;
-   private int quantidade;
-   private double precoUnitario;
+    private int idItemPedido;
+    private Produto produto;
+    private int quantidade;
+    private Double precoUnitario;
 
-    public ItemPedido(int idIntPedido, Produto produto, int quantidade) {
-        this.IdIntPedido = idIntPedido;
+    public ItemPedido(int idItemPedido, Produto produto, int quantidade) {
+        this.idItemPedido = idItemPedido;
         this.produto = produto;
         this.quantidade = quantidade;
         this.precoUnitario = produto.getPreco();
     }
 
-    public int getIdIntPedido() {
-        return IdIntPedido;
+    public int getIdItemPedido() {
+        return idItemPedido;
+    }
+
+    public void setIdItemPedido(int idItemPedido) {
+        this.idItemPedido = idItemPedido;
     }
 
     public Produto getProduto() {
         return produto;
     }
 
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+
     public int getQuantidade() {
         return quantidade;
     }
 
-    public double getPrecoUnitario() {
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public Double getPrecoUnitario() {
         return precoUnitario;
     }
 
-    public double getSubtotal(){
+    public void setPrecoUnitario(Double precoUnitario) {
+        this.precoUnitario = precoUnitario;
+    }
+
+    public Double getSubtotal() {
         return quantidade * precoUnitario;
     }
 
     @Override
     public String toString() {
         return "ItemPedido{" +
-                "IdIntPedido=" + IdIntPedido +
-                ", produto=" + produto +
+                "idItemPedido=" + idItemPedido +
+                ", produto=" + produto.getNomeProduto() +
                 ", quantidade=" + quantidade +
                 ", precoUnitario=" + precoUnitario +
+                ", subtotal=" + getSubtotal() +
                 '}';
     }
 }
