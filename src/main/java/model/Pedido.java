@@ -21,7 +21,7 @@ public class Pedido {
         this.valorTotal = 0.0;
     }
 
-    public void adcionarItem(ItemPedido item){
+    public void adicionarItem(ItemPedido item){
         itensPedido.add(item);
         valorTotal = valorTotal + item.getPrecoUnitario(); //Atualiza o valor total
     }
