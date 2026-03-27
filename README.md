@@ -1,45 +1,38 @@
-# Lojinha - Simulação de API de Loja Online
+# Lojinha - API de Simulação para E-commerce
 
-Este repositório contém o projeto **Lojinha**, desenvolvido como parte da atividade prática da disciplina de **Arquitetura de Software (GPE17M50279)**. O objetivo principal é simular o funcionamento de uma API para uma loja online, aplicando conceitos fundamentais de modelagem UML e padrões de projeto.
-
-## 🚀 Sobre o Projeto
-
-O projeto consiste em um sistema em Java que gerencia o fluxo básico de uma loja, desde o cadastro de clientes e produtos até o processamento de pedidos e pagamentos. A arquitetura foi pensada para demonstrar a organização de pacotes e a separação de responsabilidades.
-
-## 🛠️ Tecnologias Utilizadas
-
-- **Java**: Linguagem principal do projeto.
-- **Maven**: Gerenciador de dependências e automação de build.
-- **Padrões de Projeto (Design Patterns)**: Implementação de soluções consolidadas para problemas recorrentes.
+Este repositório apresenta o projeto **Lojinha**, uma API desenvolvida em Java para simular operações de um e-commerce. O projeto foi concebido como atividade prática da disciplina de Arquitetura de Software (GPE17M50279), com ênfase na aplicação de conceitos de modelagem UML e padrões de projeto.
 
 ## 📂 Estrutura do Projeto
 
-A estrutura de pacotes está organizada da seguinte forma:
+A organização do projeto segue uma estrutura modular, dividida em pacotes que representam as camadas lógicas da aplicação:
 
-- `model`: Contém as entidades de domínio do sistema.
-  - `Cliente`: Representa o usuário comprador.
-  - `Produto`: Detalhes dos itens disponíveis na loja.
-  - `Pedido`: Gerencia a lista de itens e o estado da compra.
-  - `ItemPedido`: Associação entre produtos e quantidades em um pedido.
-  - `Pagamento`: Define as regras e estados financeiros.
-- `service`: Concentra a lógica de negócio e integrações.
-  - `LojinhaService`: Orquestra as operações principais da loja.
-  - `SistemaPagamentoExterno`: Simulação de integração com gateways de pagamento.
-- `principal`: Classe de entrada (`Main`) para execução e testes do sistema.
+| Pacote      | Descrição                                                                                             |
+| :---------- | :---------------------------------------------------------------------------------------------------- |
+| `model`     | Contém as classes que representam as entidades de domínio do negócio, como `Cliente`, `Produto`, `Pedido`, `ItemPedido` e `Pagamento`. Essas classes encapsulam os dados e o comportamento fundamental do sistema. |
+| `service`   | Responsável por abrigar a lógica de negócio e as regras de orquestração. Inclui classes como `LojinhaService`, que coordena as operações da loja, e `SistemaPagamentoExterno`, que simula a interação com um gateway de pagamento externo. |
+| `principal` | Contém a classe `Main` (ponto de entrada da aplicação), utilizada para inicializar o sistema e demonstrar suas funcionalidades. |
 
-## 🏗️ Padrões de Projeto Aplicados
+## 🏛️ Principais Decisões Arquiteturais
 
-- **Singleton**: Utilizado na classe `SistemaPagamentoExternoSingleton` para garantir que exista apenas uma instância do serviço de pagamento externo em toda a aplicação, otimizando o uso de recursos.
+A arquitetura do projeto foi guiada por princípios de **separação de responsabilidades** e **baixo acoplamento**, visando facilitar a manutenção, a escalabilidade e a testabilidade do código. A divisão em pacotes `model`, `service` e `principal` reflete essa preocupação, isolando as preocupações de domínio, lógica de negócio e inicialização da aplicação, respectivamente.
+
+## 🎯 Aplicação do Padrão Singleton
+
+O padrão de projeto **Singleton** foi aplicado na classe `SistemaPagamentoExternoSingleton`. Esta decisão arquitetural garante que haja **apenas uma instância** do serviço de pagamento externo em toda a aplicação. Os benefícios dessa abordagem incluem:
+
+- **Controle de Recursos**: Evita a criação desnecessária de múltiplas conexões ou instâncias de serviços que consomem muitos recursos, como um gateway de pagamento.
+- **Ponto de Acesso Global**: Fornece um ponto de acesso único e centralizado para o serviço de pagamento, simplificando a sua utilização por diferentes partes da aplicação.
+- **Consistência**: Garante que todas as interações com o sistema de pagamento externo ocorram através da mesma instância, mantendo a consistência dos dados e do estado.
 
 ## ⚙️ Como Executar
 
-1. Certifique-se de ter o **JDK 11+** e o **Maven** instalados.
-2. Clone o repositório:
-   ```bash
-   git clone https://github.com/eduuardo1st/Lojinha.git
-   ```
-3. Navegue até a pasta do projeto e execute o build:
-   ```bash
-   mvn clean install
-   ```
-4. Execute a classe principal no pacote `principal`.
+1.  Certifique-se de ter o **JDK 17** e o **Maven** instalados.
+2.  Clone o repositório:
+    ```bash
+    git clone https://github.com/eduuardo1st/Lojinha.git
+    ```
+3.  Navegue até a pasta do projeto e execute o build:
+    ```bash
+    mvn clean install
+    ```
+4.  Execute a classe principal no pacote `principal`.
